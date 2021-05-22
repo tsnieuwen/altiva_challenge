@@ -9,8 +9,16 @@ class Deck
     @cards = nil
   end
 
-  # def create_deck 
-  #   @cards =
-  # end
+  def create_deck
+    if @valid_suits.class == Array && @valid_values.class == Array
+      @cards = @valid_suits.map do |suit|
+        @valid_values.map do |value|
+          Card.new(suit, value)
+        end
+      end.flatten
+    else
+      nil
+    end
+  end
 
 end

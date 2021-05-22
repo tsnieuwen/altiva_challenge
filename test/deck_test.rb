@@ -32,4 +32,53 @@ class DeckTest < Minitest::Test
     assert_equal deck.valid_values, ["9", "10", "Jack", "Queen", "King", "Ace"]
     assert_nil deck.cards
   end
+
+  def test_create_deck_without_instantiation_arguments
+    deck = Deck.new
+
+    deck.create_deck
+    assert_equal deck.cards.class, Array
+    assert_equal deck.cards.count, 52
+    assert_equal deck.cards[0].class, Card
+    assert_equal deck.cards[0].suit, "diamond"
+    assert_equal deck.cards[0].value, "2"
+    assert_equal deck.cards[51].class, Card
+    assert_equal deck.cards[51].suit, "club"
+    assert_equal deck.cards[51].value, "Ace"
+  end
+
+  def test_create_deck_with_valid_instantiation_arguments
+    deck = Deck.new(["diamond", "heart", "spade", "club"], ["9", "10", "Jack", "Queen", "King", "Ace"])
+
+    deck.create_deck
+    assert_equal deck.cards.class, Array
+    assert_equal deck.cards.count, 24
+    assert_equal deck.cards[0].class, Card
+    assert_equal deck.cards[0].suit, "diamond"
+    assert_equal deck.cards[0].value, "9"
+    assert_equal deck.cards[23].class, Card
+    assert_equal deck.cards[23].suit, "club"
+    assert_equal deck.cards[23].value, "Ace"
+  end
+
+  def test_create_deck_with_invalid_first_argument
+    deck = Deck.new(23, ["9", "10", "Jack", "Queen", "King", "Ace"])
+
+    deck.create_deck
+    assert_nil deck.cards
+  end
+
+  def test_create_deck_with_invalid_second_argument
+    deck = Deck.new(["9", "10", "Jack", "Queen", "King", "Ace"], 23)
+
+    deck.create_deck
+    assert_nil deck.cards
+  end
+
+  def test_create_deck_with_invalid_first_and_second_argument
+    deck = Deck.new(112, 23)
+
+    deck.create_deck
+    assert_nil deck.cards
+  end
 end
