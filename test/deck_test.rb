@@ -119,19 +119,19 @@ class DeckTest < Minitest::Test
   def test_shuffle_with_invalid_first_argument
     deck = Deck.new(1, ["9", "10", "Jack", "Queen", "King", "Ace"])
 
-    assert_equal deck.shuffle_deck, "We were unable to process this request because your deck parameters are invalid. If you would like a custom deck, please makes sure you are entering two paramenters, and that they are both arrays"
+    assert_nil deck.shuffle_deck
   end
 
   def test_shuffle_with_invalid_second_argument
     deck = Deck.new(["9", "10", "Jack", "Queen", "King", "Ace"], 1)
 
-    assert_equal deck.shuffle_deck, "We were unable to process this request because your deck parameters are invalid. If you would like a custom deck, please makes sure you are entering two paramenters, and that they are both arrays"
+    assert_nil deck.shuffle_deck
   end
 
   def test_shuffle_with_invalid_first_and_second_argument
     deck = Deck.new(23, 1)
 
-    assert_equal deck.shuffle_deck, "We were unable to process this request because your deck parameters are invalid. If you would like a custom deck, please makes sure you are entering two paramenters, and that they are both arrays"
+    assert_nil deck.shuffle_deck
   end
 
   def test_manual_shuffle
@@ -139,5 +139,29 @@ class DeckTest < Minitest::Test
     cards = deck.cards
 
     assert_equal cards.to_set, deck.manual_shuffle.to_set
+  end
+
+  def test_show_cards_happy_path
+    deck = Deck.new(["heart", "diamond"], ["Queen", "King", "Ace"])
+
+    assert deck.show_cards.include? "Card #1, "
+    assert deck.show_cards.include? "Card #2, "
+    assert deck.show_cards.include? "Card #3, "
+    assert deck.show_cards.include? "Card #4, "
+    assert deck.show_cards.include? "Card #5, "
+    assert deck.show_cards.include? "Card #6, "
+    refute deck.show_cards.include? "Card #7, "
+    assert deck.show_cards.include? "Queen of hearts\n"
+    assert deck.show_cards.include? "King of hearts\n"
+    assert deck.show_cards.include? "Ace of hearts\n"
+    assert deck.show_cards.include? "Queen of diamonds\n"
+    assert deck.show_cards.include? "King of diamonds\n"
+    assert deck.show_cards.include? "Ace of diamonds\n"
+  end
+
+  def test_show_cards_sad_path
+    deck = Deck.new("blue", 12345)
+
+    assert_equal deck.show_cards, "We were unable to process this request because your deck parameters are invalid." "\n" "If you would like a custom deck, please makes sure you are entering two paramenters, and that they are both arrays"
   end
 end
