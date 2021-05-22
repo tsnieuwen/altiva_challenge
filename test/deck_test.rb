@@ -81,4 +81,38 @@ class DeckTest < Minitest::Test
     deck.create_deck
     assert_nil deck.cards
   end
+
+  def test_shuffle_no_deck_arguments
+    deck = Deck.new
+
+    deck.shuffle
+    assert_equal deck.cards.class, Array
+    assert_equal deck.cards.count, 52
+  end
+
+  def test_shuffle_with_deck_arguments
+      deck = Deck.new(["diamond", "heart", "spade", "club"], ["9", "10", "Jack", "Queen", "King", "Ace"])
+
+    deck.shuffle
+    assert_equal deck.cards.class, Array
+    assert_equal deck.cards.count, 24
+  end
+
+  def test_shuffle_with_invalid_first_argument
+    deck = Deck.new(1, ["9", "10", "Jack", "Queen", "King", "Ace"])
+
+    assert_equal deck.shuffle, "We were unable to process this request because your deck parameters are invalid. If you would like a custom deck, please makes sure you are entering two paramenters, and that they are both arrays"
+  end
+
+  def test_shuffle_with_invalid_second_argument
+    deck = Deck.new(["9", "10", "Jack", "Queen", "King", "Ace"], 1)
+
+    assert_equal deck.shuffle, "We were unable to process this request because your deck parameters are invalid. If you would like a custom deck, please makes sure you are entering two paramenters, and that they are both arrays"
+  end
+
+  def test_shuffle_with_invalid_first_and_second_argument
+    deck = Deck.new(23, 1)
+
+    assert_equal deck.shuffle, "We were unable to process this request because your deck parameters are invalid. If you would like a custom deck, please makes sure you are entering two paramenters, and that they are both arrays"
+  end
 end

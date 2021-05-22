@@ -21,4 +21,13 @@ class Deck
     end
   end
 
+  def shuffle
+    create_deck
+    if @cards.nil?
+      "We were unable to process this request because your deck parameters are invalid. If you would like a custom deck, please makes sure you are entering two paramenters, and that they are both arrays"
+    else
+      @cards = @cards.shuffle
+    end
+  end
+
 end
