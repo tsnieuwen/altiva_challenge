@@ -2,5 +2,5 @@ require './lib/card'
 require './lib/deck'
 
 deck = Deck.new
-require "pry"; binding.pry
-puts deck.show_shuffled_cards
+deck.shuffle_deck
+puts deck.show_cards
