@@ -26,7 +26,7 @@ This is the take home challenge associated with an interview for a software engi
 
 ### Overview
 
-This challenge is designed to created an automated card shuffler. It defaults to a standard 52-card deck, with four suits (heart, diamond, club, and spade) and 13 cards per suit (2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace). However, the user has the option to create a custom deck when playing a game that does not use a standard deck (pinochle, multiplayer gin rummy, uno, etc.).
+This challenge is designed to create an automated card shuffler. It defaults to a standard 52-card deck, with four suits (heart, diamond, club, and spade) and 13 cards per suit (2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace). However, the user has the option to create a custom deck when playing a game that does not use a standard deck (pinochle, multiplayer gin rummy, uno, etc.).
 
 ### Card Class
 #### Initialization
@@ -41,7 +41,7 @@ An instance of the `Deck` class has three attributes: `valid_suits`, `valid_valu
 `Deck.new(["diamond", "heart", "spade", "club"], ["9", "9", "10", 10", "Jack", "Jack", "Queen", "Queen", "King", "King", "Ace", "Ace"])` will create a custom deck of cards (in this particular example, a standard pinochle deck). Notice there are two arguments provided, which correspond to two attributes of the `Deck` class: `valid_suits` and `valid_values`. Also notice that both of these arguments are arrays. If the user enters a data type other than arrays for these arguments, the instances of the `Card` class, which make up the `cards` attribute in the `Deck` class, will not be created. More on that below.
 
 #### Populating the Deck with Card Objects
-The `valid_suits` and `valid_values` attributes of the `Deck` class were described in the `Initialization` section above. Here, the third and final `Deck` class attribute, `cards` will be discussed. The `cards` attribute is set equal to the `#valid_deck_parameters` instance method, which runs upon initializing of a `Deck` class instance.
+The `valid_suits` and `valid_values` attributes of the `Deck` class were described in the `Initialization` section above. Here, the third and final `Deck` class attribute, `cards`, will be discussed. The `cards` attribute is set equal to the `#valid_deck_parameters` instance method, which runs upon initializing of a `Deck` class instance.
 
 ##### #valid_deck_parameters
 The `#valid_deck_parameters` method contains a guard clause to make sure that the `valid_suits` and `valid_values` attributes of the `Deck` instance are indeed arrays. If either of the attributes' data types are non-arrays, `#valid_deck_parameters` will set the value of the `cards` attribute to `nil`. If `valid_suits` and `valid_values` are both arrays, `#valid_deck_parameters` will call `#create_deck`.

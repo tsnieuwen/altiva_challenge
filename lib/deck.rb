@@ -63,7 +63,7 @@ class Deck
       fresh_shuffle << random_card
       @cards.delete(random_card)
     end
-    @cards = fresh_shuffle
+    fresh_shuffle
   end
 
   def show_cards
