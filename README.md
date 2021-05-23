@@ -28,25 +28,40 @@ This is the take home challenge associated with the software engineering positio
 This challenge is designed to created an automated card shuffler. It defaults to a standard 52-card deck, with four suits (heart, diamond, club, and spade) and 13 cards per suit (2, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace). However, the user has the option of creating a custom deck if they wish to play a card game that does not use a standard deck (pinochle, multiplayer gin rummy, uno, etc.)
 
 ### Card Class
-
+#### Initialization
 An instance of the card class is initialized with and has two attributes, `suit` and `value`. There are no additional methods or attributes associated with the card class, as the scope of this challenge is geared more towards manipulating a deck of multiple cards.
 
 ### Deck Class  
 #### Initialization
-An instance of the deck class has three attributes: `valid_suits`, `valid_values,`, and `cards`. As mentioned about in the `Overview` section, an instance of the deck class does not need to initialized with those arguments.
+An instance of the deck class has three attributes: `valid_suits`, `valid_values,`, and `cards`. As mentioned above in the `Overview` section, an instance of the deck class does not need to be initialized with those arguments.
 
-Running `Deck.new` will create a standard 52-card deck, and the `valid_suits` and `valid_values` attributes are set to `["diamond", "heart", "spade", "club"]` and `["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]` by default, respectively.
+`Deck.new` will create a standard 52-card deck, with the `valid_suits` and `valid_values` attributes being set to `["diamond", "heart", "spade", "club"]` and `["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]` by default, respectively.
 
-Running `Deck.new(["diamond", "heart", "spade", "club"], ["9", "9", "10", 10", "Jack", "Jack", "Queen", "Queen", "King", "King", "Ace", "Ace"])` will create a custom deck of cards (in this particular example, a standard pinocle deck). You will notice there are two arguments provided, which correspond to two attributes of the `deck class`: `valid_suits` and `valid_values`. You will also notice that both of these arguments are arrays. If the user enters a data type other than arrays for these arguments, the instances of the `card` class, which make up the `cards` attribute in the `deck` class, will not be created. More on that below.
+`Deck.new(["diamond", "heart", "spade", "club"], ["9", "9", "10", 10", "Jack", "Jack", "Queen", "Queen", "King", "King", "Ace", "Ace"])` will create a custom deck of cards (in this particular example, a standard pinocle deck). Notice there are two arguments provided, which correspond to two attributes of the `Deck` class: `valid_suits` and `valid_values`. Also notice that both of these arguments are arrays. If the user enters a data type other than arrays for these arguments, the instances of the `card` class, which make up the `cards` attribute in the `deck` class, will not be created. More on that below.
 #### Populating the Deck with Card Objects
-The `valid_suits` and `valid_values` attributes of the `Deck` class were described in the `Initialization` section above. Here, the third and final `Deck` class attributes, `cards` will be discussed. The `cards` attribute is set equal to the `#create_deck` instance method, and which runs upon initializing of a `Deck` class instance.
+The `valid_suits` and `valid_values` attributes of the `Deck` class were described in the `Initialization` section above. Here, the third and final `Deck` class attributes, `cards` will be discussed. The `cards` attribute is set equal to the `#valid_deck_parameters` instance method, and which runs upon initializing of a `Deck` class instance.
 ##### #valid_deck_parameters
 The `#valid_deck_parameters` method contains a guard clause to make sure that the `valid_suits` and `valid_values` attributes are indeed arrays. If either of the attributes' data types are non-arrays, `#valid_deck_parameters` will set the value of the `cards` attribute to `nil`. If `valid_suits` and `valid_values` are both arrays, `#valid_deck_parameters` will call `#create_deck`.
 
 ##### #create_deck
-As the name may imply, the `#create_deck` method creates the actual deck of cards. It iterates through the `valid_suits` and `valid_values` arrays to populate the `cards` attribute of `Deck` class new instances of the `Card` class.
+As the name may imply, the `#create_deck` method creates the actual deck of cards. It iterates through the `valid_suits` and `valid_values` arrays to populate the `cards` attribute of `Deck` class with instances of the `Card` class.
 
 #### Shuffling the Deck
+There are two approaches to shuffling the deck of cards:
+1. Using the built-in Ruby `#shuffle` method
+1. Hand-rolling and creating a custom shuffle method
+
+For showcase purposes, this challenge shuffles the deck via `approach 2`. However, implementation of `approach 1` is included in the `./lib/deck.rb` file and commented out on `lines 31-35`.
+
+##### #shuffle_deck
+The `#shuffle_deck` method is a guard clause to make sure that there are indeed `Card` objects in the deck to be shuffled. If there are cards in the deck, `#shuffle_deck` calls `#manual_shuffle`. If there are not, then the `cards` attribute for the deck simply remains set to `nil`.
+
+##### #manual_shuffle
+`#manual_shuffle` selects a random card from the existing deck, copies it, inserts it into a new array, and then deletes that card from the existing deck, until all cards are removed from the existing deck and inserted into the new temporary array. Once this is achieved, the deck's `cards` attribute is set equal to this new array - thus shuffling the deck.
+
+#### Displaying Shuffle
+The remaining two `Deck` instance method, `#show_cards` and `show_valid_cards` are discussed below in `Running The Code`.
+### Running The Code
 
 
 
