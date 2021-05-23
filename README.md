@@ -8,7 +8,7 @@ This is the take home challenge associated with a software engineering position 
   - [Getting Started](#getting-started)
   - [Design](#design)
   - [Running the Shuffler](#running-the-shuffler)
-  - [Running the tests](#running-the-tests)
+  - [Running the Tests](#running-the-tests)
   - [Built With](#built-with)
   - [Versioning](#versioning)
   - [Author](#author)
