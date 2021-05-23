@@ -8,6 +8,7 @@ This is the take home challenge associated with the software engineering positio
   - [Getting Started](#getting-started)
   - [Running the tests](#running-the-tests)
   - [Design](#design)
+  - [Running the Shuffler](#running-the-shuffler)
   - [Built With](#built-with)
   - [Versioning](#versioning)
   - [Author](#author)
@@ -60,8 +61,17 @@ The `#shuffle_deck` method is a guard clause to make sure that there are indeed 
 `#manual_shuffle` selects a random card from the existing deck, copies it, inserts it into a new array, and then deletes that card from the existing deck, until all cards are removed from the existing deck and inserted into the new temporary array. Once this is achieved, the deck's `cards` attribute is set equal to this new array - thus shuffling the deck.
 
 #### Displaying Shuffle
-The remaining two `Deck` instance method, `#show_cards` and `show_valid_cards` are discussed below in `Running The Code`.
-### Running The Code
+The remaining two `Deck` instance method, `#show_cards` and `show_valid_cards` are discussed below in `Running The Shuffler`.
+
+## Running The Shuffler
+####Remaining `Deck` Instance Methods
+
+##### #show_cards
+`#show_cards` is another guard clause-based method. It first checks to see if there are any cards in the deck. If there aren't, it returns
+```
+"We were unable to process this request because your deck parameters are invalid. If you would like a custom deck, please makes sure you are entering two parameters, and that they are both arrays. If you would like a standard 52-card deck, please remove all parameters"
+```
+
 
 
 
