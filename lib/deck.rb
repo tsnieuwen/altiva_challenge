@@ -19,12 +19,27 @@ class Deck
     end
   end
 
+# This #create_deck method is easier to read and understand, but it less performant then the method below
+
+  # def create_deck
+  #   @cards = @valid_suits.flat_map do |suit|
+  #     @valid_values.map do |value|
+  #       Card.new(suit, value)
+  #     end
+  #   end
+  # end
+
   def create_deck
-    @cards = @valid_suits.flat_map do |suit|
-      @valid_values.map do |value|
-        Card.new(suit, value)
-      end
+    suit_counter = 0
+    value_counter = 0
+    deck =[]
+    until deck.count == (@valid_suits.count * @valid_values.count)
+      deck << Card.new(@valid_suits[suit_counter], @valid_values[value_counter])
+      value_counter += 1
+      value_counter = 0 if (value_counter == @valid_values.count)
+      suit_counter += 1 if (deck.count == (suit_counter + 1) * (@valid_values.count))
     end
+    deck
   end
 
 ### This shuffle_deck method just uses the built-in ruby #shuffle method
@@ -69,7 +84,5 @@ class Deck
     end
     output
   end
-
-
 
 end
