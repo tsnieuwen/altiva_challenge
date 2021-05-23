@@ -71,19 +71,20 @@ The remaining two `Deck` instance method, `#show_cards` and `show_valid_cards` a
 ```
 "We were unable to process this request because your deck parameters are invalid. If you would like a custom deck, please makes sure you are entering two parameters, and that they are both arrays. If you would like a standard 52-card deck, please remove all parameters"
 ```
+If there cards in the deck, `#show_cards` will call the previously discussed `#shuffle_deck`, and then `#show_valid_cards`.
 
+##### #show_valid_cards
+`#show_valid_cards` iterates through every gaurd in the deck, and displays the cards information in the following format:
+`"Card #1: Queen of hearts"`
 
-
-
-
-
-
-
+####Let's See It
+- To see the shuffler in action, run `ruby lib/runner.rb` from the command line interface (CLI).
+- To see a shuffled, custom deck, manipulate the code on `line 4` of the `./lib/runner.rb` file. Remember, the two arguments need to be arrays!
 
 ## Running the tests
 There are two test files associated with this challenge; `./test/card_test.rb` and `./test/deck_test.rb`.
 
-These tests are executed by running `ruby test/card_test.rb ` and `ruby test/deck_test.rb` in your terminal (one test at a time).
+These tests are executed by running `ruby test/card_test.rb ` and `ruby test/deck_test.rb` from the CLI.
 
 ## Built With
 - Ruby
