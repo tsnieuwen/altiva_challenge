@@ -80,9 +80,9 @@ If there cards in the deck, `#show_cards` will call the previously discussed `#s
 - To see a shuffled, custom deck, manipulate the code on `line 4` of the `./lib/runner.rb` file. Remember, the two arguments need to be arrays! First array corresponds to the desired suits in the custom deck, the second array corresponds to the desired values in the custom deck.
 
 ## Running the tests
-There are two test files associated with this challenge; `./test/card_test.rb` and `./test/deck_test.rb`.
-
-These tests are executed by running `ruby test/card_test.rb ` and `ruby test/deck_test.rb` from the CLI.
+- There are two test files associated with this challenge; `./test/card_test.rb` and `./test/deck_test.rb`.
+- These tests are executed by running `ruby test/card_test.rb ` and `ruby test/deck_test.rb` from the CLI.
+- Full test coverage was confirmed using SimpleCov
 
 ## Built With
 - Ruby
