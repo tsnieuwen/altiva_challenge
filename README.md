@@ -16,11 +16,11 @@ This is the take home challenge associated with the software engineering positio
 ## Getting Started
 
 - To get the web application running, please fork and clone down the repo.
-`git clone <git@github.com:<your github handle>/altiva_challenge.git>`
+`git clone git@github.com:<user github handle>/altiva_challenge.git`
 
-- To run this application you will need Ruby 2.5.3.
+- This application runs on Ruby 2.5.3.
 
-- If you do not already have Ruby installed, follow these [installation instructions](https://www.ruby-lang.org/en/documentation/installation/)
+- To install Ruby, follow these [instructions](https://www.ruby-lang.org/en/documentation/installation/)
 
 ## Design
 
@@ -61,11 +61,6 @@ The `#shuffle_deck` method is a guard clause to make sure that there are indeed 
 `#manual_shuffle` selects a random card from the existing deck, copies it, inserts it into a new array, and then deletes that card from the existing deck, until all cards are removed from the existing deck and inserted into the new temporary array. Once this is achieved, the deck's `cards` attribute is set equal to this new array - thus shuffling the deck.
 
 #### Displaying Shuffle
-The remaining two `Deck` instance method, `#show_cards` and `show_valid_cards` are discussed below in `Running The Shuffler`.
-
-## Running The Shuffler
-####Remaining `Deck` Instance Methods
-
 ##### #show_cards
 `#show_cards` is another guard clause-based method. It first checks to see if there are any cards in the deck. If there aren't, it returns
 ```
@@ -77,7 +72,7 @@ If there cards in the deck, `#show_cards` will call the previously discussed `#s
 `#show_valid_cards` iterates through every gaurd in the deck, and displays the cards information in the following format:
 `"Card #1: Queen of hearts"`
 
-####Let's See It
+## Running The Shuffler
 - To see the shuffler in action, run `ruby lib/runner.rb` from the command line interface (CLI).
 - To see a shuffled, custom deck, manipulate the code on `line 4` of the `./lib/runner.rb` file. Remember, the two arguments need to be arrays!
 
