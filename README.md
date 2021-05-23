@@ -39,9 +39,17 @@ Running `Deck.new` will create a standard 52-card deck, and the `valid_suits` an
 
 Running `Deck.new(["diamond", "heart", "spade", "club"], ["9", "9", "10", 10", "Jack", "Jack", "Queen", "Queen", "King", "King", "Ace", "Ace"])` will create a custom deck of cards (in this particular example, a standard pinocle deck). You will notice there are two arguments provided, which correspond to two attributes of the `deck class`: `valid_suits` and `valid_values`. You will also notice that both of these arguments are arrays. If the user enters a data type other than arrays for these arguments, the instances of the `card` class, which make up the `cards` attribute in the `deck` class, will not be created. More on that below.
 #### Populating the Deck with Card Objects
-The `valid_suits` and `valid_values` attributes of the `Deck` class were described in the `Initialization` section above. Here, the third and final `Deck` class attributes, `cards` will be discussed. The `cards` attribute is set equal to the `create_deck` instance method, and which runs upon initializing of a `Deck` class instance.
-#####
-#create_deck
+The `valid_suits` and `valid_values` attributes of the `Deck` class were described in the `Initialization` section above. Here, the third and final `Deck` class attributes, `cards` will be discussed. The `cards` attribute is set equal to the `#create_deck` instance method, and which runs upon initializing of a `Deck` class instance.
+##### #valid_deck_parameters
+The `#valid_deck_parameters` method contains a guard clause to make sure that the `valid_suits` and `valid_values` attributes are indeed arrays. If either of the attributes' data types are non-arrays, `#valid_deck_parameters` will set the value of the `cards` attribute to `nil`. If `valid_suits` and `valid_values` are both arrays, `#valid_deck_parameters` will call `#create_deck`.
+
+##### #create_deck
+As the name may imply, the `#create_deck` method creates the actual deck of cards. It iterates through the `valid_suits` and `valid_values` arrays to populate the `cards` attribute of `Deck` class new instances of the `Card` class.
+
+#### Shuffling the Deck
+
+
+
 
 
 

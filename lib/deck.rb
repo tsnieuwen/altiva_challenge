@@ -11,15 +11,15 @@ class Deck
     @cards = create_deck
   end
 
-  def create_deck
+  def valid_deck_parameters
     if @valid_suits.class == Array && @valid_values.class == Array
-      valid_deck_parameters
+      create_deck
     else
       nil
     end
   end
 
-  def valid_deck_parameters
+  def create_deck
     @cards = @valid_suits.flat_map do |suit|
       @valid_values.map do |value|
         Card.new(suit, value)
@@ -29,22 +29,10 @@ class Deck
 
 ### This shuffle_deck method just uses the built-in ruby #shuffle method
   # def shuffle_deck
-  #   if @cards.nil?
-  #     "We were unable to process this request because your deck parameters are invalid. If you would like a custom deck, please makes sure you are entering two paramenters, and that they are both arrays"
-  #   else
-  #     @cards = @cards.shuffle
-  #   end
+  #   @cards = @cards.shuffle
   # end
 
-### This shuffle deck method and associated helper methods shuffle the deck without using the built-in ruby method
-  # def shuffle_deck
-  #   if @cards.nil?
-  #     "We were unable to process this request because your deck parameters are invalid. If you would like a custom deck, please makes sure you are entering two paramenters, and that they are both arrays"
-  #   else
-  #     @cards = manual_shuffle
-  #   end
-  # end
-
+### The following two methods shuffle the deck of cards without using the built-in ruby #shuffle method 
   def shuffle_deck
     if !@cards.nil?
       @cards = manual_shuffle
