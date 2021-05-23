@@ -53,7 +53,7 @@ class Deck
 
   def show_cards
     if @cards.nil?
-      "We were unable to process this request because your deck parameters are invalid." "\n" "If you would like a custom deck, please makes sure you are entering two parameters, and that they are both arrays" "\n" "If you would like a standard 52-card deck, please remove all parameters"
+      "We were unable to process this request because your deck parameters are invalid." "\n" "If you would like a custom deck, please makes sure you are entering two parameters, and that they are both arrays." "\n" "If you would like a standard 52-card deck, please remove all parameters."
     else
       shuffle_deck
       show_valid_cards
