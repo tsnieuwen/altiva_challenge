@@ -49,12 +49,18 @@ The `#valid_deck_parameters` method contains a guard clause to make sure that th
 ##### #create_deck
 As the name may imply, the `#create_deck` method creates the actual deck of cards. It iterates through the `valid_suits` and `valid_values` arrays to populate the `cards` attribute of the `Deck` instance with instances of the `Card` class.
 
+There are two approaches taken to creating the deck:
+1. Nested iteration (commented out on lines 24-30)
+1. Looping and incrementing variables (active on lines 32-43)
+
+While both options are functional - option 1 is less performant than option 2. On the other hand, option 1 is much easier to read, and less busy of a method than option 2. Option 2 was ultimately utilized, due to prioritization of code performance.
+
 #### Shuffling the Deck
 There are two approaches to shuffling the deck of cards:
 1. Using the built-in Ruby `#shuffle` method
 1. Hand-rolling and creating a custom shuffle method
 
-For showcase purposes, this challenge shuffles the deck via `approach 2`. However, implementation of `approach 1` is included in the `./lib/deck.rb` file and commented out on `lines 31-35`.
+For showcase purposes, this challenge shuffles the deck via `approach 2`. However, implementation of `approach 1` is included in the `./lib/deck.rb` file and commented out on `lines 46-50`.
 
 ##### #shuffle_deck
 The `#shuffle_deck` method is a guard clause to make sure that there are indeed `Card` objects in the deck to be shuffled. If there are cards in the deck, `#shuffle_deck` calls `#manual_shuffle`. If there are not, then the `cards` attribute for the deck remains set to `nil`.
@@ -77,7 +83,7 @@ If there cards in the deck, `#show_cards` will call the previously discussed `#s
 ## Running The Shuffler
 
 - To see the shuffler in action, run `ruby lib/runner.rb` from the command line interface (CLI).
-- To see a shuffled, custom deck, manipulate the code on `line 4` of the `./lib/runner.rb` file. Remember, the two arguments need to be arrays! First array corresponds to the desired suits in the custom deck, the second array corresponds to the desired values in the custom deck.
+- To see a shuffled, custom deck, manipulate the code on `line 3` of the `./lib/runner.rb` file. Remember, the two arguments need to be arrays! First array corresponds to the desired suits in the custom deck, the second array corresponds to the desired values in the custom deck.
 
 ## Running the tests
 - There are two test files associated with this challenge; `./test/card_test.rb` and `./test/deck_test.rb`.
