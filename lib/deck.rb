@@ -8,7 +8,7 @@ class Deck
   def initialize(valid_suits = ["diamond", "heart", "spade", "club"], valid_values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"])
     @valid_suits = valid_suits
     @valid_values = valid_values
-    @cards = create_deck
+    @cards = valid_deck_parameters
   end
 
   def valid_deck_parameters
@@ -29,10 +29,12 @@ class Deck
 
 ### This shuffle_deck method just uses the built-in ruby #shuffle method
   # def shuffle_deck
-  #   @cards = @cards.shuffle
+  #   if !@cards.nil?
+  #     @cards = @cards.shuffle
+  #   end
   # end
 
-### The following two methods shuffle the deck of cards without using the built-in ruby #shuffle method 
+### The following two methods shuffle the deck of cards without using the built-in ruby #shuffle method
   def shuffle_deck
     if !@cards.nil?
       @cards = manual_shuffle
@@ -50,8 +52,9 @@ class Deck
   end
 
   def show_cards
+    shuffle_deck
     if @cards.nil?
-      "We were unable to process this request because your deck parameters are invalid." "\n" "If you would like a custom deck, please makes sure you are entering two paramenters, and that they are both arrays"
+      "We were unable to process this request because your deck parameters are invalid." "\n" "If you would like a custom deck, please makes sure you are entering two paramenters, and that they are both arrays" "\n" "If you would like a standard 52-card deck, please remove all parameters"
     else
       show_valid_cards
     end
@@ -61,7 +64,7 @@ class Deck
     counter = 1
     output = ""
     @cards.each do |card|
-      output += "Card ##{counter}, #{card.value} of #{card.suit}s" "\n"
+      output += "Card ##{counter}: #{card.value} of #{card.suit}s" "\n"
       counter += 1
     end
     output
